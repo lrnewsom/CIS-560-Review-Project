@@ -2,21 +2,21 @@ IF SCHEMA_ID(N'ReviewSystem') IS NULL
 	EXEC(N'CREATE SCHEMA [ReviewSystem];');
 GO
 
-DROP TABLE IF EXISTS ReviewSystem.Publisher;
-DROP TABLE IF EXISTS ReviewSystem.ProductType;
-DROP TABLE IF EXISTS ReviewSystem.Developer;
-DROP TABLE IF EXISTS ReviewSystem.Tag;
-DROP TABLE IF EXISTS ReviewSystem.Genre;
+DROP TABLE IF EXISTS ReviewSystem.Review;
+DROP TABLE IF EXISTS ReviewSystem.GameTag;
+DROP TABLE IF EXISTS ReviewSystem.VideoGame;
+DROP TABLE IF EXISTS ReviewSystem.Book;
+DROP TABLE IF EXISTS ReviewSystem.ActorMovie;
+DROP TABLE IF EXISTS ReviewSystem.Movie;
+DROP TABLE IF EXISTS ReviewSystem.Product;
+DROP TABLE IF EXISTS ReviewSystem.[User];
 DROP TABLE IF EXISTS ReviewSystem.Actor;
 DROP TABLE IF EXISTS ReviewSystem.Director;
-DROP TABLE IF EXISTS ReviewSystem.[User];
-DROP TABLE IF EXISTS ReviewSystem.Product;
-DROP TABLE IF EXISTS ReviewSystem.Movie;
-DROP TABLE IF EXISTS ReviewSystem.ActorMovie;
-DROP TABLE IF EXISTS ReviewSystem.Book;
-DROP TABLE IF EXISTS ReviewSystem.VideoGame;
-DROP TABLE IF EXISTS ReviewSystem.GameTag;
-DROP TABLE IF EXISTS ReviewSystem.Review;
+DROP TABLE IF EXISTS ReviewSystem.Genre;
+DROP TABLE IF EXISTS ReviewSystem.Tag;
+DROP TABLE IF EXISTS ReviewSystem.Developer;
+DROP TABLE IF EXISTS ReviewSystem.ProductType;
+DROP TABLE IF EXISTS ReviewSystem.Publisher;
 
 CREATE TABLE ReviewSystem.Publisher
 (
@@ -105,4 +105,77 @@ CREATE TABLE ReviewSystem.Movie
 
 	CONSTRAINT [FK_ReviewSystem_Movie_ReviewSystem_Director] FOREIGN KEY(DirectorID)
 	REFERENCES ReviewSystem.Director(DirectorID)
+)
+
+CREATE TABLE ReviewSystem.ActorMovie
+(
+	ProductID INT NOT NULL,
+	ActorID INT NOT NULL,
+
+	PRIMARY KEY ( ProductID, ActorID ),
+
+	CONSTRAINT [FK_ReviewSystem_ActorMovie_ReviewSystem_Movie] FOREIGN KEY(ProductID) 
+	REFERENCES ReviewSystem.Movie(ProductID),
+
+	CONSTRAINT [FK_ReviewSystem_ActorMovie_ReviewSystem_Actor] FOREIGN KEY(ActorID)
+	REFERENCES ReviewSystem.Actor(ActorID)
+)
+
+CREATE TABLE ReviewSystem.Book
+(
+	ProductID INT NOT NULL PRIMARY KEY,
+	ProductTypeID INT NOT NULL, -- do we need this? Would not all books be the same product type.
+	PublisherID INT NOT NULL,
+
+	CONSTRAINT [FK_ReviewSystem_Book_ReviewSystem_Product] FOREIGN KEY(ProductID, ProductTypeID)
+	REFERENCES ReviewSystem.Product(ProductID, ProductTypeID),
+	
+	CONSTRAINT [FK_ReviewSystem_Book_ReviewSystem_Publisher] FOREIGN KEY(PublisherID)
+	REFERENCES ReviewSystem.Publisher(PublisherID)
+)
+
+CREATE TABLE ReviewSystem.VideoGame
+(
+	ProductID INT NOT NULL PRIMARY KEY,
+	ProductTypeID INT NOT NULL,
+	DeveloperID INT NOT NULL,
+
+	CONSTRAINT [FK_ReviewSystem_VideoGame_ReviewSystem_Product] FOREIGN KEY(ProductID, ProductTypeID)
+	REFERENCES ReviewSystem.Product(ProductID, ProductTypeID),
+	
+	CONSTRAINT [FK_ReviewSystem_VideoGame_ReviewSystem_Developer] FOREIGN KEY(DeveloperID)
+	REFERENCES ReviewSystem.Developer(DeveloperID)
+)
+
+CREATE TABLE ReviewSystem.GameTag
+(
+	ProductID INT NOT NULL,
+	TagID INT NOT NULL,
+
+	PRIMARY KEY ( ProductID, TagID ),
+
+	CONSTRAINT [FK_ReviewSystem_GameTag_ReviewSystem_VideoGame] FOREIGN KEY(ProductID)
+	REFERENCES ReviewSystem.VideoGame(ProductID),
+
+	CONSTRAINT [FK_ReviewSystem_GameTag_ReviewSystem_Tag] FOREIGN KEY(TagID)
+	REFERENCES ReviewSystem.Tag(TagID)
+)
+
+CREATE TABLE ReviewSystem.Review
+(
+	ReviewID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	ProductID INT NOT NULL,
+	UserID INT NOT NULL,
+	Rating INT NOT NULL,
+	Review NVARCHAR(2500) NOT NULL,
+	IsRecommended BIT NOT NULL,
+	ReviewDate DATETIME NOT NULL,
+
+	UNIQUE ( ProductID, UserId ),
+
+	CONSTRAINT [FK_ReviewSystem_Review_ReviewSystem_Product] FOREIGN KEY(ProductID)
+	REFERENCES ReviewSystem.Product(ProductID),
+	
+	CONSTRAINT [FK_ReviewSystem_Review_ReviewSystem_User] FOREIGN KEY(UserID)
+	REFERENCES ReviewSystem.[User](UserID)
 )
