@@ -1,0 +1,14 @@
+{
+  "name": "back_end",
+  "version": "1.0.0",
+  "description": "Node js for the repo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node": "^21.1.0"
+  }
+}
