@@ -19,11 +19,77 @@
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
+        <FileNode Name="ActorRanking.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>ActorRanking.sql</FullPath>
+        </FileNode>
+        <FileNode Name="generate_Actor.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>generate_Actor.sql</FullPath>
+        </FileNode>
+        <FileNode Name="generate_Director.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>generate_Director.sql</FullPath>
+        </FileNode>
+        <FileNode Name="generate_Genre.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>generate_Genre.sql</FullPath>
+        </FileNode>
+        <FileNode Name="generate_products.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>generate_products.sql</FullPath>
+        </FileNode>
+        <FileNode Name="generate_productTypes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>generate_productTypes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="generate_users.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>generate_users.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ProductTypeRanking.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>ProductTypeRanking.sql</FullPath>
+        </FileNode>
+        <FileNode Name="RecommendedRatio.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>RecommendedRatio.sql</FullPath>
+        </FileNode>
         <FileNode Name="Setup.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>Setup.sql</FullPath>
+        </FileNode>
+        <FileNode Name="testing.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>testing.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UserRanking.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UserRanking.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
