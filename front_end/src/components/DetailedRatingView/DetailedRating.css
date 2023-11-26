@@ -1,0 +1,22 @@
+.detailed-rating-image{
+    width: 100%;
+}
+
+.detailed-rating-name{
+    /* font-family: verdana; */
+    font-size: 4em;
+    font-weight: 900;
+    color: #C109AF;
+    text-shadow: 1px 1px 1px #c22db3,
+        1px 2px 1px #dd29cb,
+        1px 3px 1px #df74d5,
+        1px 4px 1px #e189d8,
+        1px 5px 1px #ecb4e7,
+        1px 6px 1px #f9aaf1,
+        1px 7px 1px #e8c1e4,
+        1px 8px 1px #e3cae1,
+        1px 18px 6px rgba(66, 64, 64, 0.4),
+        1px 22px 10px rgba(16,16,16,0.2),
+        1px 25px 35px rgba(16,16,16,0.2),
+        1px 30px 60px rgba(16,16,16,0.4);
+}
