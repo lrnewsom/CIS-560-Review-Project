@@ -7,7 +7,8 @@ BEGIN
         R.Rating,
 		R.Review,
 		R.IsRecommended,
-		R.ReviewDate
+		R.ReviewDate,
+		R.ReviewID
     FROM
         ReviewSystem.Review R
 		INNER JOIN ReviewSystem.Product AS P ON P.ProductID = R.ProductID
@@ -43,3 +44,5 @@ BEGIN
 		INNER JOIN ReviewSystem.Developer AS Dev ON Dev.DeveloperID = V.DeveloperID
 	WHERE P.ProductTypeID = @ProductType
 END;
+
+--Write query to show all reviews a person has written

@@ -33,6 +33,35 @@ GO
 
 
 
+-- Delete a Review
+CREATE OR ALTER PROCEDURE RemoveReview
+    @ReviewID INT
+AS
+BEGIN
+    DELETE FROM ReviewSystem.Review
+	WHERE ReviewID = @ReviewID
+END;
+GO
+
+
+--Edit a Review
+CREATE OR ALTER PROCEDURE EditReview
+	@ReviewID INT,
+	@Review NVARCHAR,
+	@Rating INT,
+	@IsRecommended BIT
+AS
+BEGIN
+	UPDATE	ReviewSystem.Review
+	SET
+		Review = @Review,
+		Rating = @Rating,
+		IsRecommended = @IsRecommended,
+		ReviewDate = SYSDATETIME()
+	WHERE ReviewID = @ReviewID
+END;
+GO
+
 -- Create an Admin
 CREATE OR ALTER PROCEDURE AddAdmin
     @UserName NVARCHAR
@@ -181,5 +210,3 @@ BEGIN
 END;
 GO
 
-
---Write query to show all reviews a person has written
