@@ -11,6 +11,8 @@ export default function ({ProductType}) {
     const [CurrentProduct, SetCurrentProduct] = useState([]);
     const [Directors, SetDirectors] = useState([]);
     const [Genres, SetGenre] = useState([]);
+    const [Publisher, SetPublisher] = useState([]);
+    const [Tags, SetTags] = useState([]);
 
 
     // the following search terms will be used to filter out items
@@ -19,6 +21,10 @@ export default function ({ProductType}) {
     const [FilterByMaxRating, SetFilterByMaxRating] = useState(0);
     const [FilterByGenre, SetFilterByGenre] = useState(0);
 
+    // to add new or select existing item
+    const [IsNewDirector, SetIsNewDirector] = useState(false);
+    const [IsNewPublisher, SetIsNewPublisher] = useState(false);
+
 
     // Add new product to the database
     const [ProductName, SetProductName] = useState('');
@@ -26,6 +32,8 @@ export default function ({ProductType}) {
     const [ProductImage, SetProductImage] = useState('');
     const [ProductGenere, SetProductGenere] = useState('');
     const [ProductDirector, SetProductDirector] = useState('');
+    const [ProductPublisher ,SetProductPublisher] = useState('');
+    const [ProductTag, SetProductTag] = useState('');
 
 
     // ############################################################################
@@ -48,6 +56,7 @@ export default function ({ProductType}) {
 
 
 
+
     // ############################################################################
     // when the page loads it will get all teh directors from the databasee
     useEffect(()=>{
@@ -64,6 +73,25 @@ export default function ({ProductType}) {
             SetDirectors([]);
         });
     }, [])
+
+
+    // get all the gamer tags
+    useEffect(()=>{
+        axios.get(LINK+'gettags')
+        .then(response=>{
+            if(response.data === 'failed'){
+                SetTags([]);
+            }
+            else{
+                SetTags(response.data);
+            }
+        })
+        .catch(err=>{
+            SetTags([]);
+        });
+    }, [])
+
+
 
 
     // ############################################################################
@@ -83,6 +111,26 @@ export default function ({ProductType}) {
         });
     }, [])
 
+
+
+
+    // gets all existing publishers from the DB
+    useEffect(()=>{
+        axios.get(LINK+'getpublisher')
+        .then(response=>{
+            if(response.data === 'failed'){
+                SetPublisher([]);
+                console.log('failed');
+            }
+            else{
+                SetPublisher(response.data);
+                console.log('publisher is set');
+            }
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }, [])
 
 
     // ############################################################################
@@ -147,7 +195,7 @@ export default function ({ProductType}) {
 
 
 
-
+console.log(Publisher);
 
 
   return (
@@ -178,6 +226,7 @@ export default function ({ProductType}) {
                 </div>
 
                 {/* Allows admin select approprate genere */}
+                {ProductType === 'movie' ? (
                 <div className='mb-4'>
                     <label className='form-label text-uppercase'>Select {ProductType} genre</label>
                     <select className='form-select' id="genre" onChange={(e)=>{SetProductGenere(e.target.value)}}>
@@ -186,16 +235,62 @@ export default function ({ProductType}) {
                         ))}
                     </select>
                 </div>
+                  ) : null}
+
+
+                {ProductType === 'video game' ? (
+                <div className='mb-4'>
+                    <label className='form-label text-uppercase'>Select {ProductType} tag</label>
+                    <select className='form-select' id="genre" onChange={(e)=>{SetProductTag(e.target.value)}}>
+                        {Tags.map((data, key)=>(
+                            <option key={key} value={data.TagID}>{data.TagName}</option>
+                        ))}
+                    </select>
+                </div>
+                  ) : null}
                 
                 {/* allows user to select director */}
                 {ProductType === 'movie' ?(
                     <div className='mb-4'>
-                        <label className='form-label text-uppercase'>Select {ProductType} director</label>
-                        <select className='form-select' id="genre" onChange={(e)=>{SetProductDirector(e.target.value)}}>
-                            {Directors.map((data, key)=>(
-                                <option key={key} value={data.DirectorID}>{data.DirectorName}</option>
+                        {!IsNewDirector ? (
+                            <div>
+                                <label className='form-label text-uppercase'>Select {ProductType} director</label>
+                                <select className='form-select' id="genre" onChange={(e)=>{SetProductDirector(e.target.value)}}>
+                                    {Directors.map((data, key)=>(
+                                        <option key={key} value={data.DirectorID}>{data.DirectorName}</option>
+                                    ))}
+                                </select>     
+                            </div>
+                            ): null}
+
+                        <button className='btn btn-primary mt-3' onClick={()=> !IsNewDirector ? SetIsNewDirector(true) : SetIsNewDirector(false)}> {IsNewDirector ? 'SELECT EXISTING DIRECTOR' : 'ADD NEW DIRECTOR'}</button>
+                        
+                        {IsNewDirector ? (
+                            <div className='mt-3'>
+                                <label className='form-label'>ADD DIRECTOR</label>
+                                <input type="text" className='form-control' onChange={(e)=>{SetProductDirector(e.target.value)}}/>    
+                            </div> ) : null}
+                        
+                    </div> ) : null}
+
+
+                {/* allows user to select publisher */}
+                {ProductType === 'book'?(
+                    <div className='mb-4'>
+                        <label className='form-label text-uppercase'>Select {ProductType} publisher</label>
+                        <select className='form-select' id="genre" onChange={(e)=>{SetProductPublisher(e.target.value)}}>
+                            {Publisher.map((data, key)=>(
+                                <option key={key} value={data.PublisherID}>{data.PublisherName}</option>
                             ))}
                         </select>
+
+                        <button className='btn btn-primary mt-3' onClick={()=> !IsNewPublisher ? SetIsNewPublisher(true) : SetIsNewPublisher(false)}> {IsNewDirector ? 'SELECT EXISTING PUBLISHER' : 'ADD NEW PUBLISHER'}</button>
+                        
+                        {IsNewPublisher ? (
+                            <div className='mt-3'>
+                                <label className='form-label'>ADD PUBLISHER</label>
+                                <input type="text" className='form-control' onChange={(e)=>{SetProductPublisher(e.target.value)}}/>    
+                            </div> ) : null}
                     </div> ) : null}
 
                 <button className='btn btn-success' onClick={HandelAddNewProduct}>Add {ProductType}+</button>

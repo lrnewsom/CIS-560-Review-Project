@@ -118,12 +118,42 @@ app.get('/getgenre', (req, res)=>{
 })
 
 
+
+
+// gets all the publsihers from the database
+app.get('/getpublisher', (req, res)=>{
+    var getPublisherQuery = "SELECT * From ReviewSystem.Publisher;";
+    con.query(getPublisherQuery, (err, result)=>{
+        if(err){res.send('failed')}
+        else{
+            res.json(result);
+        }
+    })
+})
+
+
+
+// gets all the publsihers from the database
+app.get('/gettags', (req, res)=>{
+    var getTagsQuery = "SELECT * From ReviewSystem.Tag;";
+    con.query(getTagsQuery, (err, result)=>{
+        if(err){res.send('failed')}
+        else{
+            res.json(result);
+        }
+    })
+})
+
+
+
+
 //********************************************************************
 // delete user from database
 app.delete('/deleteuser/:userID', (req, res)=>{
     const userID = parseInt(req.params.userID);
     res.send('deleted'); // is deleted
 })
+
 
 
 //********************************************************************
