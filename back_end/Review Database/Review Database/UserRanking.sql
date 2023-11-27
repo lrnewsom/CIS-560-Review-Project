@@ -1,4 +1,4 @@
-CREATE PROCEDURE GetUserRanking
+CREATE PROCEDURE ReviewSystem.GetUserRanking
     @FirstDate DATETIME,
     @LastDate DATETIME
 AS

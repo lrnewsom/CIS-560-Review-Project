@@ -1,4 +1,4 @@
-CREATE PROCEDURE GetMediaRanking
+CREATE PROCEDURE ReviewSystem.GetMediaRanking
     @ProductTypeID INT
 AS
 BEGIN

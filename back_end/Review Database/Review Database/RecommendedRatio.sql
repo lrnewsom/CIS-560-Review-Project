@@ -1,4 +1,4 @@
-CREATE PROCEDURE GetRecommendedRatio
+CREATE PROCEDURE ReviewSystem.GetRecommendedRatio
     @ProductTypeID INT
 AS
 BEGIN

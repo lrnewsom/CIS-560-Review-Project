@@ -1,4 +1,4 @@
-CREATE PROCEDURE GetActorRanking
+CREATE PROCEDURE ReviewSystem.GetActorRanking
 AS
 BEGIN
     WITH ActorAverageRating AS (

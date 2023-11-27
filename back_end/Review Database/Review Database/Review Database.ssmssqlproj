@@ -31,17 +31,47 @@
           <AssociatedConnUserName />
           <FullPath>generate_Actor.sql</FullPath>
         </FileNode>
+        <FileNode Name="generate_ActorMovie.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>generate_ActorMovie.sql</FullPath>
+        </FileNode>
+        <FileNode Name="generate_Books.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>generate_Books.sql</FullPath>
+        </FileNode>
+        <FileNode Name="generate_Developers.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>generate_Developers.sql</FullPath>
+        </FileNode>
         <FileNode Name="generate_Director.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>generate_Director.sql</FullPath>
         </FileNode>
+        <FileNode Name="generate_GameTag.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>generate_GameTag.sql</FullPath>
+        </FileNode>
         <FileNode Name="generate_Genre.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>generate_Genre.sql</FullPath>
+        </FileNode>
+        <FileNode Name="generate_Movies.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>generate_Movies.sql</FullPath>
         </FileNode>
         <FileNode Name="generate_products.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
@@ -55,11 +85,41 @@
           <AssociatedConnUserName />
           <FullPath>generate_productTypes.sql</FullPath>
         </FileNode>
+        <FileNode Name="generate_Publishers.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>generate_Publishers.sql</FullPath>
+        </FileNode>
+        <FileNode Name="generate_Reviews.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>generate_Reviews.sql</FullPath>
+        </FileNode>
+        <FileNode Name="generate_Tag.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>generate_Tag.sql</FullPath>
+        </FileNode>
         <FileNode Name="generate_users.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>generate_users.sql</FullPath>
+        </FileNode>
+        <FileNode Name="generate_VideoGames.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>generate_VideoGames.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Non-AggregatingQueries.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(localdb)\MSSQLLocalDb</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Non-AggregatingQueries.sql</FullPath>
         </FileNode>
         <FileNode Name="ProductTypeRanking.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(localdb)\MSSQLLocalDb:True</AssociatedConnectionMoniker>
