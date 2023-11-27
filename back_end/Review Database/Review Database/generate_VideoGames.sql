@@ -1,3 +1,5 @@
+DELETE FROM ReviewSystem.VideoGame;
+
 -- Declare variables to store ProductTypeID for movies
 DECLARE @VGProductTypeID INT;
 
@@ -16,3 +18,4 @@ FROM
     ReviewSystem.Product AS P
 WHERE
     P.ProductTypeID = @VGProductTypeID;
+

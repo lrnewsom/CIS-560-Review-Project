@@ -28,3 +28,21 @@ FROM ReviewSystem.VideoGame;
 
 SELECT *
 FROM ReviewSystem.GameTag;
+
+SELECT *
+FROM ReviewSystem.ProductType;
+
+SELECT *
+FROM ReviewSystem.Publisher;
+
+SELECT *
+FROM ReviewSystem.Book;
+
+SELECT ProductID
+FROM ReviewSystem.Product;
+
+SELECT UserID
+FROM ReviewSystem.[User];
+
+SELECT *
+FROM ReviewSystem.Review;

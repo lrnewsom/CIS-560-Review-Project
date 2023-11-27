@@ -1,3 +1,5 @@
+DELETE FROM ReviewSystem.Movie;
+
 -- Declare variables to store ProductTypeID for movies
 DECLARE @MovieProductTypeID INT;
 
