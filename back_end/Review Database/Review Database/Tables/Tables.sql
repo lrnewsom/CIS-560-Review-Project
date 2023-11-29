@@ -67,6 +67,7 @@ CREATE TABLE ReviewSystem.[User]
 	UserName NVARCHAR(30) NOT NULL, -- This also should be unique? Thinking about other systems, only one user can have a username, so the usernames would be unique.
 	[Password] NVARCHAR(50) NOT NULL,
 	IsAdmin BIT NOT NULL,
+	IsDeleted BIT NOT NULL DEFAULT('FALSE'),
 
 	UNIQUE( UserID, UserName ),
 	UNIQUE( UserID, Email )
