@@ -39,6 +39,7 @@ export default function () {
         }  
     }, []);
 
+
     //console.log(Users)
 
     //given user ID delete the user from the database
@@ -72,12 +73,12 @@ export default function () {
     function HandelAddNewUser(){
         const parameter = {
             userName: NewUserName,
-            userEmail: NewUserEmail,
-            userPassword: NewUserPassword,
-            userStatus: NewUserStatus
+            email: NewUserEmail,
+            password: NewUserPassword,
+            isAdmin: NewUserStatus == '0' ? false : true
         };
 
-        axios.post(LINK+'addnewuser', {parameter})
+        axios.post(LINK+'adduser', parameter)
         .then(response=>{
             console.log(response.data);
         })

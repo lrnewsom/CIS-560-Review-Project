@@ -63,9 +63,19 @@ app.get('/changeuserstatus', (req, res)=>{
 
 //********************************************************************
 // add new user to the database
-app.post('/addnewuser', (req, res)=>{
-    res.send('success')
-})
+app.post('/adduser', (req, res) => {
+    const { userName, password, email, isAdmin } = req.body;
+    console.log(req.body);
+    const addUserProcedure = 'CALL AddUser(?, ?, ?, ?)';
+    con.query(addUserProcedure, [userName, password, email, isAdmin], (err, result) => {
+        if (err) {
+            res.send('failed');
+        } else {
+            res.send('added');
+        }
+    });
+});
+
 
 
 //********************************************************************
@@ -190,34 +200,172 @@ app.post('/getAllProducts', (req, res)=>{
 
 // to send movie data to the database
 app.get('/getmovies', (req, res)=>{
-    const moviesData = [
-        {Image:'image', ProductID: 1, Name:'The big lie', ProductType:2, Rating:'8.3', IsRecommended:'Yes', Genre:'Action', PublisherID:123},
-        {Image:'image', ProductID: 2, Name:'The big Truth', ProductType:2, Rating:'2.3', IsRecommended:'No', Genre:'Comedy', PublisherID:123},
-    ]
-    res.json(moviesData);
+    const getMoviesQuery = "SELECT * From ReviewSystem.Product Where ProductTypeID = 1 LIMIT 10;";
+    con.query(getMoviesQuery, (err, result)=>{
+        if(err){res.send('failed');}
+        else{
+            res.json(result);
+        }
+    })
 })
 
 
 
 // to send game data to the database
 app.get('/getgames', (req, res)=>{
-    const gameData = [
-        {Image:'image', ProductID: 1, Name:'The big lie', ProductType:2, Rating:'8.3', IsRecommended:'Yes', PublisherName:'Warm Sun', PublisherID:123},
-        {Image:'image', ProductID: 2, Name:'The big Truth', ProductType:2, Rating:'2.3', IsRecommended:'No', PublisherName:'Warm Sun Stuff', PublisherID:123},
-    ]
-    res.send(gameData);
+    const getGamesQuery = "SELECT * From ReviewSystem.Product Where ProductTypeID = 2 LIMIT 10;";
+    con.query(getGamesQuery, (err, result)=>{
+        if(err){res.send('failed');}
+        else{
+            res.json(result);
+        }
+    })
 })
 
 
 
-// get movies
+// get books
 app.get('/getbooks', (req, res)=>{
-    const booksData = [
-        {Image:'image', ProductID: 1, Name:'The big lie', ProductType:2, Rating:'8.3', IsRecommended:'Yes', PublisherName:'Warm Sun', PublisherID:123},
-        {Image:'image', ProductID: 2, Name:'The big Truth', ProductType:2, Rating:'2.3', IsRecommended:'No', PublisherName:'Warm Sun Stuff', PublisherID:123},
-    ]
-
-    res.json(moviesData);
+    const getBooksQuery = "SELECT * From ReviewSystem.Product Where ProductTypeID = 3 LIMIT 10;";
+    con.query(getBooksQuery, (err, result)=>{
+        if(err){res.send('failed');}
+        else{
+            res.json(result);
+        }
+    })
 })
 
+//SELECT * FROM ReviewSystem.User WHERE Email = 'biruk1@ksu.edu' and Password = 'password';
+// login to as a user
+app.post('/login', (req, res) => {
+    const { email, password} = req.body;
+    const loginQuery = `SELECT * FROM ReviewSystem.User WHERE Email = '${email}' and Password = '${password}';`;
+    con.query(loginQuery, (err, result) => {
+        if (err) {
+            res.send('failed');
+            console.log('failed to login');
+        } else {
+            if(result.length === 0){
+                res.send('failed');
+            }else{
+                res.json(result);   
+            }
+            
+        }
+    });
+});
 
+
+// get all reviwes from the database
+// API endpoint to get product reviews
+// API endpoint to get product reviews using POST
+app.post('/getreviwes', (req, res) => {
+    const productID = req.body.productID;
+
+    // Call the stored procedure
+    con.query('CALL GetProductReviews(?)', [productID], (err, result) => {
+        if (err) {
+            console.error("Error executing stored procedure:", err);
+            res.send('failed');
+        } else {
+            // Extract the result from the stored procedure
+            const reviews = result[0];
+
+            // Send the reviews as JSON response
+            res.json(reviews);
+        }
+    });
+});
+
+
+
+
+// add review to the database
+app.post('/addreview', (req, res) => {
+    const { ProductID, UserName, Rating, Review, IsRecommended } = req.body;
+    // Assuming you have a stored procedure named AddReview
+    const addReviewProcedure = 'CALL AddReview(?, ?, ?, ?, ?)';
+  
+    con.query(
+      addReviewProcedure,
+      [ProductID, UserName, Rating, Review, IsRecommended],
+      (err, results) => {
+        if (err) {
+          console.error('Error executing AddReview procedure: ', err);
+          res.send('failed');
+          return;
+        }
+        else{
+            res.send('added');
+        }
+      }
+    );
+  });
+
+
+
+//SELECT * From ReviewSystem.Review where UserID = 14;
+//SELECT * FROM ReviewSystem.User WHERE Email = 'biruk1@ksu.edu' and Password = 'password';
+// login to as a user
+app.post('/getuserreviewbyid', (req, res) => {
+    const { UserID} = req.body;
+    const Query = `SELECT * FROM ReviewSystem.Review WHERE UserID = '${UserID}';`;
+    con.query(Query, (err, result) => {
+        if (err) {
+            res.send('failed');
+            console.log('failed to login');
+        } else {
+            if(result.length === 0){
+                res.send('failed');
+            }else{
+                res.json(result);   
+            }
+            
+        }
+    });
+});
+
+
+
+//Delete From ReviewSystem.Review where ReviewID = 3;
+// delete a review from the data base based on the ReviewID;
+app.post('/deletereview', (req, res) => {
+    const { ReviewID} = req.body;
+    const Query = `DELETE FROM ReviewSystem.Review where ReviewID = '${ReviewID}';`;
+    con.query(Query, (err, result) => {
+        if (err) {
+            res.send('failed');
+        } else {
+            res.send('deleted');  
+        }
+    });
+});
+
+
+
+// Route to handle the update request
+app.post('/updatereview', (req, res) => {
+    const { ReviewID, Rating, Review, IsRecommended } = req.body;
+  
+    // Validate incoming data (you may add more validation as needed)
+  
+    // Update the values in the database
+    const updateQuery = `
+      UPDATE ReviewSystem.Review
+      SET
+        Rating = ?,
+        Review = ?,
+        IsRecommended = ?
+      WHERE
+        ReviewID = ?;
+    `;
+  
+    // Execute the query
+    con.query(updateQuery, [Rating, Review, IsRecommended, ReviewID], (error, results) => {
+      if (error) {
+        res.send('failed');
+      } else {
+        res.send('updated');
+      }
+    });
+  });

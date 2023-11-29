@@ -30,10 +30,10 @@ function Footer() {
 
 
   return (
-    <div className='w-100 bg-dark text-white'>
-        <h5 className='mb-2 text-center pt-5'>SIGNUP</h5>
+    <div className='w-100 bg-dark text-white border' style={{height:'200px'}}>
+        <h5 className='mb-2 text-center pt-5'>WELCOME</h5>
         <div className='my-5 container  p-2 d-flex gap-3 .flex-column justify-content-center'>
-            <div className='my-4' style={{maxWidth:'400px'}}>
+            {/* <div className='my-4' style={{maxWidth:'400px'}}>
                 <label htmlFor="new user name" className='form-label'>USER NAME</label>
                 <input type="text" onChange={(e)=>{SetNewUserName(e.target.value)}} class="form-control mb-3"  placeholder="Jhon Cx" />
 
@@ -48,7 +48,7 @@ function Footer() {
 
                 <button className='btn btn-success my-3' onClick={HandelAddNewUser}>SIGNUP+</button>
                 <button className='btn btn-warning my-3 mx-2'>CLEAR</button>
-            </div>
+            </div> */}
         </div>
     </div>
   )

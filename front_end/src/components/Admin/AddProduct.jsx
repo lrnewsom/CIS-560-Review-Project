@@ -34,6 +34,7 @@ export default function ({ProductType}) {
     const [ProductDirector, SetProductDirector] = useState('');
     const [ProductPublisher ,SetProductPublisher] = useState('');
     const [ProductTag, SetProductTag] = useState('');
+    const [ProductActor, SetProductActor] = useState('');
 
 
     // ############################################################################
@@ -143,7 +144,9 @@ export default function ({ProductType}) {
             ProductDescription: ProductDescription,
             ProductGenere: ProductGenere,
             ProductDirector: ProductDirector,
-            ProductImage: ProductImage
+            ProductImage: ProductImage,
+            ProductPublisher: ProductPublisher,
+            ProductTag: ProductTag
         }
 
         axios.post(LINK+'addnewproduct', {parameter})
@@ -234,6 +237,11 @@ console.log(Publisher);
                             <option key={key} value={data.GenreID}>{data.GenreName}</option>
                         ))}
                     </select>
+                    <div className='mb-4 mt-3'>
+                        <label className='form-label'>ADD ACTOR</label>
+                        <input type="text" className='form-control' onChange={(e)=>{SetProductActor(e.target.value);}} />    
+                    </div>
+                    
                 </div>
                   ) : null}
 
