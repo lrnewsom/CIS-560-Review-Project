@@ -21,7 +21,7 @@ DROP TABLE IF EXISTS ReviewSystem.Publisher;
 CREATE TABLE ReviewSystem.Publisher
 (
 	PublisherID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-	PublisherName NVARCHAR(50) NOT NULL -- Should this be unique? Would we want to allow multiple publishers to have the same name?
+	PublisherName NVARCHAR(50) NOT NULL UNIQUE -- Should this be unique? Would we want to allow multiple publishers to have the same name?
 )
 
 CREATE TABLE ReviewSystem.ProductType
@@ -33,7 +33,7 @@ CREATE TABLE ReviewSystem.ProductType
 CREATE TABLE ReviewSystem.Developer
 (
 	DeveloperID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-	DeveloperName NVARCHAR(50) NOT NULL -- Should this also be unique?
+	DeveloperName NVARCHAR(50) NOT NULL UNIQUE-- Should this also be unique?
 )
 
 CREATE TABLE ReviewSystem.Tag
@@ -51,26 +51,23 @@ CREATE TABLE ReviewSystem.Genre
 CREATE TABLE ReviewSystem.Director
 (
 	DirectorID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-	DirectorName NVARCHAR(50) NOT NULL -- Should this be unique?
+	DirectorName NVARCHAR(50) NOT NULL UNIQUE-- Should this be unique?
 )
 
 CREATE TABLE ReviewSystem.Actor
 (
 	ActorID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-	ActorName NVARCHAR(50) NOT NULL -- Should this be unique?
+	ActorName NVARCHAR(50) NOT NULL UNIQUE-- Should this be unique?
 )
 
 CREATE TABLE ReviewSystem.[User]
 (
 	UserID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-	Email NVARCHAR(50) NOT NULL, -- Should this be unique? Would we want unique combos of userid and email, or just unique emails? Should one user be able to make multiple accounts with one email?
-	UserName NVARCHAR(30) NOT NULL, -- This also should be unique? Thinking about other systems, only one user can have a username, so the usernames would be unique.
+	Email NVARCHAR(50) NOT NULL UNIQUE, -- Should this be unique? Would we want unique combos of userid and email, or just unique emails? Should one user be able to make multiple accounts with one email?
+	UserName NVARCHAR(30) NOT NULL UNIQUE, -- This also should be unique? Thinking about other systems, only one user can have a username, so the usernames would be unique.
 	[Password] NVARCHAR(50) NOT NULL,
 	IsAdmin BIT NOT NULL,
 	IsDeleted BIT NOT NULL DEFAULT('FALSE'),
-
-	UNIQUE( UserID, UserName ),
-	UNIQUE( UserID, Email )
 )
 
 CREATE TABLE ReviewSystem.Product

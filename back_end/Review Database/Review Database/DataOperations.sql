@@ -168,7 +168,7 @@ BEGIN
 
 	--Creates new Movie
 	INSERT ReviewSystem.Movie(ProductID,ProductTypeID,DirectorID,GenreID)
-	SELECT IDENT_CURRENT(N'ReviewSystem.Product'),PT.ProductTypeID,D.DirectorID, G.GenreID --HELP
+	SELECT IDENT_CURRENT(N'ReviewSystem.Product'),PT.ProductTypeID,D.DirectorID, G.GenreID
 	FROM ReviewSystem.Director D
 		INNER JOIN ReviewSystem.Genre AS G ON G.GenreName = @GenreName
 		INNER JOIN ReviewSystem.ProductType AS PT ON ProductTypeID = 3
